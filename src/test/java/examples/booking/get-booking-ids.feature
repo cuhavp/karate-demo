@@ -1,3 +1,4 @@
+@booking
 Feature: booking ids
   Return the ids of all the bookings that existing within the API.
   Can take optional query strings to search and return a subset of booking ids.

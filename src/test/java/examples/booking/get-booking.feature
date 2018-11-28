@@ -6,6 +6,7 @@ Feature: Specific booking id
   Scenario: verify existing booking
     Given path  'booking','1'
     And header Accept = 'application/json'
+    And header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM='
     When method GET
     Then status 200
     And assert responseTime < 5000
@@ -64,6 +65,7 @@ Feature: Specific booking id
     Given path  'booking','1'
     And header Accept = 'application/json'
     And header Content-Type = 'application/json'
+    And header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM='
     And request
      """
      {
@@ -81,7 +83,7 @@ Feature: Specific booking id
     When method PUT
     Then status 200
     And assert responseTime < 5000
-    Then match response.booking ==
+    Then match response ==
     """
     {
       "firstname": "#string",
@@ -100,6 +102,7 @@ Feature: Specific booking id
     Given path  'booking','1'
     And header Accept = 'application/json'
     And header Content-Type = 'application/json'
+    And header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM='
     And request
      """
      {
@@ -107,10 +110,10 @@ Feature: Specific booking id
        "lastname" : "Brown"
       }
      """
-    When method PATH
+    When method P
     Then status 200
     And assert responseTime < 5000
-    Then match response.booking ==
+    Then match response ==
     """
     {
       "firstname": "#string",
@@ -129,5 +132,6 @@ Feature: Specific booking id
   Scenario: delete booking
     Given path  'booking','1'
     And header Content-Type = 'application/json'
+    And header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM='
     When method DELETE
     Then status 201
