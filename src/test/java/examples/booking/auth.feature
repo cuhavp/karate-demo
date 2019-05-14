@@ -7,5 +7,5 @@ Background:
     Given path 'auth'
     And request { "username" : "admin" , "password" : "password123" }
     When method post
-    Then status 200
+    Then status 206
     * print response.token
